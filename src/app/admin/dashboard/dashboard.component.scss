@@ -1,0 +1,495 @@
+.dashboard-container {
+  padding: 20px;
+  background-color: transparent; /* Sin fondo */
+  color: #333; /* Texto oscuro para contraste */
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-pair {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Permitir que las tarjetas se ajusten si no caben */
+}
+
+.card {
+  padding: 20px;
+  border-radius: 8px;
+  flex: 1;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra negra */
+  transition: transform 0.2s ease-in-out;
+  min-width: 200px; /* Asegurar que las tarjetas no se encojan demasiado */
+  max-width: calc(20% - 20px); /* 5 tarjetas por fila, ajustando el espacio del gap */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+.teal-card {
+  background-color: #ffffff; /* Fondo blanco, como especificado */
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #000000; /* Texto negro */
+}
+
+.trend {
+  font-size: 14px;
+  color: #e0e0e0; /* Gris claro para contraste */
+}
+
+.trend.positive {
+  color: #A3C7C4; /* Teal claro para tendencias positivas */
+}
+
+.trend.warning {
+  color: #FF6F61; /* Coral para advertencias */
+}
+
+.card .metric {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #000; /* Texto negro */
+}
+
+.card-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #E0ECEB; /* Botón claro */
+  color: #4a827e; /* Texto del botón en teal para contraste */
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.card-button:hover {
+  background-color: #C7D6D5; /* Oscurecer ligeramente el botón claro al pasar el mouse */
+}
+
+.card-button.primary {
+  background-color: #A3C7C4; /* Teal claro para el botón principal */
+  color: #4a827e;
+}
+
+.card-button.primary:hover {
+  background-color: #8FB3B0; /* Oscurecer el teal claro al pasar el mouse */
+}
+
+.action-card {
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%; /* Asegurar que "Añadir Producto" ocupe el ancho completo */
+}
+
+.business-metrics {
+  margin-top: 30px;
+}
+
+.business-metrics h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.metrics-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.metric-card {
+  flex: 1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* Fondo blanco para consistencia */
+}
+
+.metric-card h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #fff; /* Texto negro */
+}
+
+.metric-card p {
+  font-size: 14px;
+  color: #000; /* Texto negro */
+  margin-bottom: 10px;
+}
+
+.container-card-charts {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: #A3C7C4; /* Fondo blanco */
+  border-radius: 16px;
+  padding: 1.6px;
+  box-shadow: 0 0px 20px -5px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+}
+
+.container-card-charts::before {
+  position: absolute;
+  content: "";
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #3e6663; /* Teal para la sombra difuminada */
+  z-index: -10;
+  filter: blur(30px);
+}
+
+.card-charts {
+  width: 100%;
+  height: 100%;
+  background: #A3C7C4; /* Fondo blanco */
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.charts-lines {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.charts-lines i {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.lines {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lines span {
+  width: 1px;
+  height: 100%;
+  margin: 0 18px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0) 100%
+  ); /* Líneas grises suaves */
+}
+
+.tags-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.tags-card .radio {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  border-radius: 8px;
+  color: #666; /* Texto gris oscuro */
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tags-card .radio:hover {
+  color: #fff; /* Texto negro al pasar el mouse */
+}
+
+.tags-card .radio input {
+  display: none;
+}
+
+.tags-card .radio .name {
+  width: 100%;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.tags-card .radio input:checked + .name {
+  color: #4a827e; /* Teal para el texto seleccionado */
+  background: #7e9b98; /* Fondo claro teal */
+  transform: scale(1.05);
+}
+
+.tags-card .radio input:checked + .name::before {
+  position: absolute;
+  background-color: #fff; /* Fondo blanco */
+  content: "";
+  inset: 1px;
+  z-index: -1;
+  border-radius: 8px;
+}
+
+.main-texts {
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+  font-weight: 500;
+}
+
+.main-texts .title {
+  color: #fff; /* Texto negro */
+  font-size: 16px;
+}
+
+.main-texts .change {
+  color: #fff; /* Texto negro */
+  font-size: 14px;
+}
+
+.charts-lines path {
+  opacity: 0;
+}
+
+.card-charts svg {
+  transition: transform 0.5s ease;
+}
+
+.card-charts:hover svg {
+  transform: scale(1.5);
+}
+
+.icon-week path {
+  animation: draw 8s ease infinite;
+}
+
+.icon-month path {
+  animation: draw 8s 3s ease infinite;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 1500;
+    opacity: 0.8;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -1500;
+    opacity: 0.8;
+  }
+}
+
+.target-date {
+  font-size: 14px;
+  color: #A3C7C4; /* Texto negro */
+  margin-bottom: 10px;
+}
+
+.view-details {
+  color: #4a827e; /* Usar el mismo color claro para los enlaces "Ver Detalles" */
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.view-details:hover {
+  text-decoration: underline;
+}
+
+/* Estilos específicos para la tarjeta de Sales */
+.sales-card {
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  max-width: 320px;
+  border-radius: 20px;
+}
+
+.sales-card .title {
+  display: flex;
+  align-items: center;
+}
+
+.sales-card .title span {
+  position: relative;
+  padding: 0.5rem;
+  background-color: #4a827e;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sales-card .title span .material-icons {
+  font-size: 1rem; /* Tamaño del ícono */
+  color: #ffffff; /* Color blanco para el ícono */
+}
+
+.sales-card .title span svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  height: 1rem;
+}
+
+.sales-card .title-text {
+  margin-left: 0.5rem;
+  color: #374151;
+  font-size: 18px;
+}
+
+.sales-card .percent {
+  margin-left: 0.5rem;
+  color: #02972f;
+  font-weight: 600;
+  display: flex;
+}
+
+.sales-card .data {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.sales-card .data p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #1F2937;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.sales-card .data .range {
+  position: relative;
+  background-color: #E5E7EB;
+  width: 100%;
+  height: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.sales-card .data .range .fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #4a827e;
+  width: 76%;
+  height: 100%;
+  border-radius: 0.25rem;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .container-card-charts {
+    height: 250px;
+  }
+  .tags-card .radio {
+    width: 35px;
+    font-size: 9px;
+  }
+  .main-texts .title {
+    font-size: 14px;
+  }
+  .main-texts .change {
+    font-size: 12px;
+  }
+  .card {
+    max-width: calc(50% - 20px); /* 2 tarjetas por fila en pantallas pequeñas */
+  }
+}.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; /* Aumentamos el gap para dar más espacio entre las secciones */
+  width: 100%; /* Hacemos que la tarjeta ocupe todo el ancho disponible */
+  max-width: 450px; /* Aumentamos el ancho máximo para que sea más ancha */
+  margin: 0 auto; /* Centramos la tarjeta */
+}
+
+.stats-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 120px; /* Aumentamos el ancho de cada sección */
+  height: 110px; /* Aumentamos la altura de cada sección */
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  padding: 20px; /* Aumentamos el padding para más espacio interno */
+  box-shadow:
+    20px 20px 60px #e6e6e6,
+    -20px -20px 60px #f3f3f3;
+}
+
+.heading {
+  font-size: 0.9em; /* Aumentamos el tamaño de la fuente del encabezado */
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #333; /* Color oscuro para contraste */
+}
+
+.bottom-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bottom-wrapper .star {
+  width: 35px; /* Aumentamos el tamaño del ícono */
+  fill: #4a827e; /* Cambiamos el color a teal */
+}
+
+.bottom-wrapper .tag {
+  width: 32px; /* Aumentamos el tamaño del ícono */
+  fill: #4a827e; /* Cambiamos el color a teal */
+}
+
+.bottom-wrapper .thumb {
+  width: 32px; /* Aumentamos el tamaño del ícono */
+  fill: #4a827e; /* Cambiamos el color a teal */
+}
+
+.bottom-wrapper p {
+  font-size: 1.4em; /* Aumentamos el tamaño del texto del conteo */
+  font-weight: 700;
+  color: #1F2937; /* Color oscuro para contraste */
+}

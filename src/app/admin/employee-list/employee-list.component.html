@@ -1,0 +1,217 @@
+<div class="employee-list">
+  <h2>Lista de Empleados</h2>
+
+  <!-- Mostrar mensaje de error -->
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <!-- Botón de Crear -->
+  <button class="Btn" (click)="showCreateForm()">
+    <div class="sign">+</div>
+    <div class="text">Crear</div>
+  </button>
+
+  <!-- Modal para Crear -->
+  <div *ngIf="isCreating" class="modal-overlay">
+    <div class="modal-content">
+      <h3>Crear Nuevo Empleado</h3>
+      <form (ngSubmit)="createEmployee()">
+        <div>
+          <label>Nombre:</label>
+          <input 
+            [(ngModel)]="newEmployee.nombre" 
+            name="nombre" 
+            required 
+            (keypress)="restrictLettersOnly($event)" 
+          />
+        </div>
+        <div>
+          <label>Apellido Paterno:</label>
+          <input 
+            [(ngModel)]="newEmployee.apellidopaterno" 
+            name="apellidopaterno" 
+            required 
+            (keypress)="restrictLettersOnly($event)" 
+          />
+        </div>
+        <div>
+          <label>Apellido Materno:</label>
+          <input 
+            [(ngModel)]="newEmployee.apellidomaterno" 
+            name="apellidomaterno" 
+            required 
+            (keypress)="restrictLettersOnly($event)" 
+          />
+        </div>
+        <div>
+          <label>Teléfono:</label>
+          <input 
+            [(ngModel)]="newEmployee.telefono" 
+            name="telefono" 
+            required 
+            (keypress)="restrictNumbersOnly($event)" 
+          />
+        </div>
+        <div>
+          <label>RFC:</label>
+          <input 
+            [(ngModel)]="newEmployee.rfc" 
+            name="rfc" 
+            required 
+            (keypress)="restrictAlphanumeric($event)" 
+            maxlength="13" 
+          />
+        </div>
+        <div>
+          <label>Fecha de Nacimiento:</label>
+          <input 
+            [(ngModel)]="newEmployee.fechanacimiento" 
+            name="fechanacimiento" 
+            type="date" 
+            required 
+          />
+        </div>
+        <div>
+          <label>NSS:</label>
+          <input 
+            [(ngModel)]="newEmployee.nss" 
+            name="nss" 
+            required 
+            (keypress)="restrictNumbersOnly($event)" 
+            maxlength="11" 
+          />
+        </div>
+        <div>
+          <label>ID Usuario:</label>
+          <input 
+            [(ngModel)]="newEmployee.idusuario" 
+            name="idusuario" 
+            type="number" 
+            required 
+            (keypress)="restrictNumbersOnly($event)" 
+          />
+        </div>
+        <div>
+          <label>ID Rol:</label>
+          <input 
+            [(ngModel)]="newEmployee.idrol" 
+            name="idrol" 
+            type="number" 
+            required 
+            (keypress)="restrictNumbersOnly($event)" 
+          />
+        </div>
+        <button type="submit">Crear</button>
+        <button type="button" (click)="cancelCreate()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tabla de empleados -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Teléfono</th>
+        <th>RFC</th>
+        <th>Fecha Nacimiento</th>
+        <th>NSS</th>
+        <th>ID Usuario</th>
+        <th>ID Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of getPaginatedEmployees()">
+        <td>{{ employee.idempleado }}</td>
+        <td>{{ employee.nombre }}</td>
+        <td>{{ employee.apellidopaterno }}</td>
+        <td>{{ employee.apellidomaterno }}</td>
+        <td>{{ employee.telefono }}</td>
+        <td>{{ employee.rfc }}</td>
+        <td>{{ employee.fechanacimiento }}</td>
+        <td>{{ employee.nss }}</td>
+        <td>{{ employee.idusuario }}</td>
+        <td>{{ employee.idrol }}</td>
+        <td>
+          <button class="edit-button" (click)="editEmployee(employee)">
+            <svg class="edit-svgIcon" viewBox="0 0 512 512">
+              <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
+            </svg>
+          </button>
+          <button class="delete-button" (click)="showDeleteConfirm(employee)">
+            <svg class="delete-svgIcon" viewBox="0 0 448 512">
+              <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path>
+            </svg>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Controles de paginación -->
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+
+  <!-- Modal para Editar -->
+  <div *ngIf="selectedEmployee" class="modal-overlay">
+    <div class="modal-content">
+      <h3>Editar Empleado</h3>
+      <form (ngSubmit)="saveEmployee()">
+        <div>
+          <label>Nombre:</label>
+          <input [(ngModel)]="selectedEmployee.nombre" name="nombre" required />
+        </div>
+        <div>
+          <label>Apellido Paterno:</label>
+          <input [(ngModel)]="selectedEmployee.apellidopaterno" name="apellidopaterno" required />
+        </div>
+        <div>
+          <label>Apellido Materno:</label>
+          <input [(ngModel)]="selectedEmployee.apellidomaterno" name="apellidomaterno" required />
+        </div>
+        <div>
+          <label>Teléfono:</label>
+          <input [(ngModel)]="selectedEmployee.telefono" name="telefono" required />
+        </div>
+        <div>
+          <label>RFC:</label>
+          <input [(ngModel)]="selectedEmployee.rfc" name="rfc" required />
+        </div>
+        <div>
+          <label>Fecha de Nacimiento:</label>
+          <input [(ngModel)]="selectedEmployee.fechanacimiento" name="fechanacimiento" type="date" required />
+        </div>
+        <div>
+          <label>NSS:</label>
+          <input [(ngModel)]="selectedEmployee.nss" name="nss" required />
+        </div>
+        <div>
+          <label>ID Usuario:</label>
+          <input [(ngModel)]="selectedEmployee.idusuario" name="idusuario" type="number" required />
+        </div>
+        <div>
+          <label>ID Rol:</label>
+          <input [(ngModel)]="selectedEmployee.idrol" name="idrol" type="number" required />
+        </div>
+        <button type="submit">Guardar</button>
+        <button type="button" (click)="cancelEdit()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal para Eliminar -->
+  <div *ngIf="isDeleting" class="modal-overlay">
+    <div class="modal-content">
+      <h3>Confirmar Eliminación</h3>
+      <p>¿Estás seguro de que quieres eliminar al empleado "{{ employeeToDelete?.nombre }} {{ employeeToDelete?.apellidopaterno }} {{ employeeToDelete?.apellidomaterno }}"?</p>
+      <button (click)="deleteEmployee(employeeToDelete?.idempleado)" class="delete-btn">Eliminar</button>
+      <button (click)="cancelDelete()">Cancelar</button>
+    </div>
+  </div>
+</div>

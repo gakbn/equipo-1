@@ -1,0 +1,113 @@
+<div class="min-h-screen flex flex-col">
+  <app-navbar></app-navbar>
+
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Soluciones de limpieza profesional</h1>
+            <p>
+              Productos de alta calidad para mantener tus espacios impecables. Power Clean, la mejor opción para la limpieza de tu hogar y negocio.
+            </p>
+            <div class="button-group">
+              <!-- Reemplazar el botón "Ver Productos" con el nuevo botón animado -->
+              <a routerLink="/products" class="button type--C">
+                <div class="button__line"></div>
+                <div class="button__line"></div>
+                <span class="button__text">VER PRODUCTOS</span>
+                <div class="button__drow1"></div>
+                <div class="button__drow2"></div>
+              </a>
+            </div>
+          </div>
+          <div>
+            <img
+              src="/producto_5.jpg"
+              alt="Historia de Power Clean"
+              class="imagen-1"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="container">
+        <h2>¿Por qué elegir Power Clean?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="icon-circle">
+              <span class="material-icons">star</span>
+            </div>
+            <h3>Calidad Superior</h3>
+            <p>Nuestros productos están formulados con ingredientes de la más alta calidad para resultados excepcionales.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-circle">
+              <span class="material-icons">shield</span>
+            </div>
+            <h3>Seguridad Garantizada</h3>
+            <p>Productos seguros para usar en cualquier superficie y amigables con el medio ambiente.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-circle">
+              <span class="material-icons">schedule</span>
+            </div>
+            <h3>Eficiencia</h3>
+            <p>Ahorra tiempo y esfuerzo con nuestras fórmulas de acción rápida y resultados duraderos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section class="products-section">
+      <div class="container">
+        <h2>Productos Destacados</h2>
+        <p class="subtitle">Descubre nuestra selección de productos más populares para mantener tus espacios impecables.</p>
+        <div class="products-grid">
+          <div *ngFor="let product of featuredProducts" class="card">
+            <div id="cardnewfilter"><p>NEW</p></div>
+            <div id="cardbrightfilter"></div>
+            <div id="cardtop">
+              <img [src]="product.image_url" [alt]="product.nombre" />
+            </div>
+            <div routerLink="/products" id="cardbottom">
+              <p id="cardbottomtitle">{{product.nombre}}</p>
+              <p id="cardbottomprice">${{product.preciomenudeo}}</p>
+              <button routerLink="/products" class="details-btn">Ver detalles</button>
+            </div>
+          </div>
+        </div>
+        <div class="products-cta">
+          <button routerLink="/products" class="primary-btn">
+            Ver todos los productos <i class="lucide-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>¿Listo para transformar tu experiencia de limpieza?</h2>
+        <p>Únete a miles de clientes satisfechos que han mejorado sus rutinas de limpieza con Power Clean.</p>
+        <div class="button-group">
+          <button routerLink="/register" class="cta">
+            <span>CREAR UNA CUENTA</span>
+            <svg width="15px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </button>          
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+</div>

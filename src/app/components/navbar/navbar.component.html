@@ -1,0 +1,23 @@
+<mat-toolbar class="navbar desktop-nav">
+  <div class="container">
+    <!-- Logo a la izquierda -->
+    <span class="logo">PowerClean</span>
+
+    <!-- Enlaces centrados -->
+    <div class="nav-links-center">
+      <button mat-button routerLink="/" [routerLinkActive]="['active']">Inicio</button>
+      <button mat-button routerLink="/products" [routerLinkActive]="['active']">Productos</button>
+      <button mat-button routerLink="/nosotros" [routerLinkActive]="['active']">Nosotros</button>
+      <button mat-button routerLink="/contactanos" [routerLinkActive]="['active']">Contáctanos</button>
+    </div>
+
+    <!-- Enlaces a la derecha -->
+    <div class="nav-links-right">
+      <button mat-button routerLink="/register" [routerLinkActive]="['active']">Registro</button>
+      <button mat-button routerLink="/login" [routerLinkActive]="['active']">Login</button>
+    </div>
+
+    <!-- Botón para menú móvil -->
+    
+  </div>
+</mat-toolbar>

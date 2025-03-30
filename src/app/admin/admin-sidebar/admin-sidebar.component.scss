@@ -1,0 +1,90 @@
+/* Estilos para el contenedor principal */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f4f4; /* Fondo claro para el contenedor principal */
+  }
+  
+  /* Estilos para la barra lateral */
+  .sidebar {
+    width: 250px;
+    background-color: #4a827e; /* Teal más oscuro para la sidebar */
+    color: #fff;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto; /* Mantener el scroll */
+  }
+  
+  /* Estilos para el header dentro de la sidebar */
+  .admin-header {
+    background-color: #4a827e; /* Teal para el header */
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-title {
+    font-size: 20px; /* Reducir un poco el tamaño para que quepa bien en la sidebar */
+    color: #fff; /* Texto blanco para el título del header */
+    margin: 0;
+    text-align: center; /* Centrar el título */
+  }
+  
+  .admin-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .admin-menu li {
+    border-bottom: 1px solid #3A7A7D; /* Línea divisoria */
+  }
+  
+  .admin-menu a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-menu a:hover {
+    background-color: #3A7A7D; /* Teal más claro al pasar el mouse */
+  }
+  
+  .admin-menu a.active {
+    background-color: #2e5a5c; /* Teal para el elemento activo */
+  }
+  
+  .menu-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  /* Estilo para el botón de Cerrar Sesión */
+  .logout-item {
+    margin-top: auto; /* Empuja el botón al fondo de la sidebar */
+    border-top: 1px solid #3A7A7D; /* Línea divisoria superior */
+  }
+  
+  .logout-button {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: #FF6F61; /* Coral para destacar el botón de cerrar sesión */
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #FF6F61; /* Fondo coral al pasar el mouse */
+    color: #fff;
+  }
+  
+  /* Estilos para el contenido principal */
+  .content {
+    margin-left: 250px; /* Espacio para la sidebar */
+    padding: 20px;
+    flex: 1;
+  }

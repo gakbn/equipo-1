@@ -1,0 +1,244 @@
+<app-navbar></app-navbar>
+<div class="container form-container">
+  <mat-card>
+    <mat-card-title class="title">Iniciar Sesión</mat-card-title>
+    <mat-card-subtitle class="subtitle">Ingresa tus credenciales para acceder a tu cuenta</mat-card-subtitle>
+    <mat-card-content>
+      <form class="form" (ngSubmit)="login()">
+        <!-- Campo de Correo Electrónico -->
+        <mat-form-field appearance="outline" class="input">
+          <mat-label>Correo electrónico</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="tu@email.com"
+            [(ngModel)]="username"
+            name="username"
+            required
+          />
+        </mat-form-field>
+
+        <!-- Campo de Contraseña -->
+        <mat-form-field appearance="outline" class="input">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="••••••••"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+        </mat-form-field>
+
+        <!-- Enlace de Olvidé mi Contraseña -->
+        <p class="page-link">
+          <a href="#" class="page-link-label">¿Olvidaste tu contraseña?</a>
+        </p>
+
+        <!-- Botón de Iniciar Sesión -->
+        <button type="submit" class="login-btn">
+          <span class="span-mother">
+            <span>I</span>
+            <span>n</span>
+            <span>i</span>
+            <span>c</span>
+            <span>i</span>
+            <span>a</span>
+            <span>r</span>
+            <span> </span>
+            <span>S</span>
+            <span>e</span>
+            <span>s</span>
+            <span>i</span>
+            <span>ó</span>
+            <span>n</span>
+          </span>
+          <span class="span-mother2">
+            <span>I</span>
+            <span>n</span>
+            <span>i</span>
+            <span>c</span>
+            <span>i</span>
+            <span>a</span>
+            <span>r</span>
+            <span> </span>
+            <span>S</span>
+            <span>e</span>
+            <span>s</span>
+            <span>i</span>
+            <span>ó</span>
+            <span>n</span>
+          </span>
+        </button>
+      </form>
+
+      <!-- Enlace de Registro con routerLink -->
+      <p class="sign-up-label">
+        ¿No tienes una cuenta? <a routerLink="/register" class="sign-up-link">Regístrate</a>
+      </p>
+
+      <!-- Botones de Google y Facebook -->
+      <div class="buttons-container">
+        <button mat-stroked-button class="google-login-button">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" x="0px" y="0px" class="google-icon" viewBox="0 0 48 48" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
+            c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24
+            c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path>
+            <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657
+            C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path>
+            <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36
+            c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path>
+            <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571
+            c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
+          </svg>
+        </button>
+        <button mat-stroked-button class="facebook-login-button">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="facebook-icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+          </svg>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Alerta en el centro de la pantalla con loader -->
+  <div class="alert-overlay" *ngIf="showAlert">
+    <div class="alert-box">
+      <p>{{ alertMessage }}</p>
+      <!-- Loader con animación de camión -->
+      <div class="loader" *ngIf="alertMessage === 'Inicio de sesión exitoso como administrador' || alertMessage === 'Inicio de sesión exitoso como invitado'">
+        <div class="truckWrapper">
+          <div class="truckBody">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 198 93"
+              class="trucksvg"
+            >
+              <path
+                stroke-width="3"
+                stroke="#282828"
+                fill="#4a827e"
+                d="M135 22.5H177.264C178.295 22.5 179.22 23.133 179.594 24.0939L192.33 56.8443C192.442 57.1332 192.5 57.4404 192.5 57.7504V89C192.5 90.3807 191.381 91.5 190 91.5H135C133.619 91.5 132.5 90.3807 132.5 89V25C132.5 23.6193 133.619 22.5 135 22.5Z"
+              ></path>
+              <path
+                stroke-width="3"
+                stroke="#282828"
+                fill="#7D7C7C"
+                d="M146 33.5H181.741C182.779 33.5 183.709 34.1415 184.078 35.112L190.538 52.112C191.16 53.748 189.951 55.5 188.201 55.5H146C144.619 55.5 143.5 54.3807 143.5 53V36C143.5 34.6193 144.619 33.5 146 33.5Z"
+              ></path>
+              <path
+                stroke-width="2"
+                stroke="#282828"
+                fill="#282828"
+                d="M150 65C150 65.39 149.763 65.8656 149.127 66.2893C148.499 66.7083 147.573 67 146.5 67C145.427 67 144.501 66.7083 143.873 66.2893C143.237 65.8656 143 65.39 143 65C143 64.61 143.237 64.1344 143.873 63.7107C144.501 63.2917 145.427 63 146.5 63C147.573 63 148.499 63.2917 149.127 63.7107C149.763 64.1344 150 64.61 150 65Z"
+              ></path>
+              <rect
+                stroke-width="2"
+                stroke="#282828"
+                fill="#FFFCAB"
+                rx="1"
+                height="7"
+                width="5"
+                y="63"
+                x="187"
+              ></rect>
+              <rect
+                stroke-width="2"
+                stroke="#282828"
+                fill="#282828"
+                rx="1"
+                height="11"
+                width="4"
+                y="81"
+                x="193"
+              ></rect>
+              <rect
+                stroke-width="3"
+                stroke="#282828"
+                fill="#DFDFDF"
+                rx="2.5"
+                height="90"
+                width="121"
+                y="1.5"
+                x="6.5"
+              ></rect>
+              <rect
+                stroke-width="2"
+                stroke="#282828"
+                fill="#DFDFDF"
+                rx="2"
+                height="4"
+                width="6"
+                y="84"
+                x="1"
+              ></rect>
+            </svg>
+          </div>
+          <div class="truckTires">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 30 30"
+              class="tiresvg"
+            >
+              <circle
+                stroke-width="3"
+                stroke="#282828"
+                fill="#282828"
+                r="13.5"
+                cy="15"
+                cx="15"
+              ></circle>
+              <circle fill="#DFDFDF" r="7" cy="15" cx="15"></circle>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 30 30"
+              class="tiresvg"
+            >
+              <circle
+                stroke-width="3"
+                stroke="#282828"
+                fill="#282828"
+                r="13.5"
+                cy="15"
+                cx="15"
+              ></circle>
+              <circle fill="#DFDFDF" r="7" cy="15" cx="15"></circle>
+            </svg>
+          </div>
+          <div class="road"></div>
+          <svg
+            xml:space="preserve"
+            viewBox="0 0 453.459 453.459"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns="http://www.w3.org/2000/svg"
+            id="Capa_1"
+            version="1.1"
+            fill="#000000"
+            class="lampPost"
+          >
+            <path
+              d="M252.882,0c-37.781,0-68.686,29.953-70.245,67.358h-6.917v8.954c-26.109,2.163-45.463,10.011-45.463,19.366h9.993
+c-1.65,5.146-2.507,10.54-2.507,16.017c0,28.956,23.558,52.514,52.514,52.514c28.956,0,52.514-23.558,52.514-52.514
+c0-5.478-0.856-10.872-2.506-16.017h9.992c0-9.354-19.352-17.204-45.463-19.366v-8.954h-6.149C200.189,38.779,223.924,16,252.882,16
+c29.952,0,54.32,24.368,54.32,54.32c0,28.774-11.078,37.009-25.105,47.437c-17.444,12.968-37.216,27.667-37.216,78.884v113.914
+h-0.797c-5.068,0-9.174,4.108-9.174,9.177c0,2.844,1.293,5.383,3.321,7.066c-3.432,27.933-26.851,95.744-8.226,115.459v11.202h45.75
+v-11.202c18.625-19.715-4.794-87.527-8.227-115.459c2.029-1.683,3.322-4.223,3.322-7.066c0-5.068-4.107-9.177-9.176-9.177h-0.795
+V196.641c0-43.174,14.942-54.283,30.762-66.043c14.793-10.997,31.559-23.461,31.559-60.277C323.202,31.545,291.656,0,252.882,0z
+M232.77,111.694c0,23.442-19.071,42.514-42.514,42.514c-23.442,0-42.514-19.072-42.514-42.514c0-5.531,1.078-10.957,3.141-16.017
+h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+      <!-- Botón de cerrar solo para errores -->
+      <button mat-raised-button color="primary" (click)="closeAlert()" *ngIf="alertMessage !== 'Inicio de sesión exitoso como administrador' && alertMessage !== 'Inicio de sesión exitoso como invitado'">
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>

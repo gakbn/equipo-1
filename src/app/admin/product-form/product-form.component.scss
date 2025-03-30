@@ -1,0 +1,285 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: transparent; /* Sin fondo */
+  color: #333; /* Texto oscuro para contraste */
+}
+
+/* Contenedor principal */
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Navbar */
+.navbar {
+  padding: 20px;
+  background-color: #A3C7C4; /* Teal claro */
+  color: #4a827e; /* Teal oscuro para contraste */
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar-brand {
+    font-size: 24px;
+    color: #4a827e;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .navbar-toggler {
+    background: none;
+    border: none;
+    color: #4a827e;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  nav {
+    display: none;
+    &.show {
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  .nav-link {
+    color: #4a827e;
+    text-decoration: none;
+    font-size: 18px;
+    &.active {
+      font-weight: 700;
+    }
+    &:hover {
+      color: #8FB3B0; /* Teal más oscuro al pasar el mouse */
+    }
+  }
+}
+
+/* Tarjetas */
+.card {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra negra */
+  background-color: #ffffff; /* Fondo blanco */
+  transition: transform 0.2s ease-in-out;
+  margin-bottom: 20px;
+
+  &:hover {
+    transform: translateY(-5px); /* Efecto de elevación */
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+}
+
+/* Grid de sensores */
+.sensor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.card-sensor {
+  flex: 1;
+  min-width: 200px;
+  max-width: calc(25% - 20px); /* 4 por fila */
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+
+  h3 {
+    font-size: 18px;
+    color: #000000;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 14px;
+    color: #333;
+  }
+}
+
+/* Indicadores LED */
+.led-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 auto 10px;
+}
+
+.led-off { background-color: #e0e0e0; }
+.led-green { background-color: #A3C7C4; box-shadow: 0 0 10px #A3C7C4; }
+.led-yellow { background-color: #fff261; box-shadow: 0 0 10px #fff261; }
+.led-red { background-color: #dc3545; box-shadow: 0 0 10px #dc3545; }
+
+.buzzer-on {
+  color: #FF6F61; /* Coral para el buzzer activo */
+  animation: pulse 1s infinite;
+}
+
+.speaker {
+  font-size: 1.5rem;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Grid de medición y potenciómetros */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+
+  .card {
+    flex: 1;
+    min-width: 300px;
+    max-width: calc(50% - 20px); /* 2 por fila */
+  }
+}
+
+/* Contenedor del gráfico */
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: #A3C7C4; /* Teal claro */
+  border-radius: 16px;
+  padding: 1.6px;
+  box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Barra de progreso */
+.progress {
+  height: 30px;
+  background: #E0ECEB; /* Fondo claro */
+  margin-top: 10px;
+  border-radius: 4px;
+
+  div {
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+}
+
+.progress-success { background-color: #A3C7C4; }
+.progress-warning { background-color: #FF6F61; }
+.progress-danger { background-color: #dc3545; }
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #666;
+}
+
+/* Formulario de configuración */
+.config-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  div {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  select, input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #333;
+  }
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #A3C7C4; /* Teal claro */
+  color: #4a827e; /* Teal oscuro */
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #8FB3B0; /* Teal más oscuro */
+  }
+}
+
+/* Tabla de historial */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+  }
+
+  th {
+    background: #E0ECEB; /* Fondo claro */
+    font-weight: 700;
+  }
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: #e0e0e0;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .sensor-grid .card-sensor {
+    max-width: calc(50% - 20px); /* 2 por fila */
+  }
+
+  .grid .card {
+    max-width: 100%; /* 1 por fila */
+  }
+
+  .navbar nav.show {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

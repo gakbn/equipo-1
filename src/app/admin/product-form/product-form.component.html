@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power Clean - Gestión de Inventario</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+
+  <main class="container">
+    <!-- Estado del Inventario -->
+    <section class="card">
+      <h2>Estado del Inventario</h2>
+      <div class="sensor-grid">
+        <div class="card-sensor" *ngFor="let sensor of sensors">
+          <h3>{{sensor.name}}</h3>
+          <div [ngClass]="getSensorClasses(sensor)" *ngIf="sensor.type !== 'buzzer'"></div>
+          <i [ngClass]="{'buzzer-on': sensor.value === '1', 'speaker': true}" *ngIf="sensor.type === 'buzzer'"></i>
+          <p>Estado: <span>{{sensor.value === '1' ? 'Encendido' : 'Apagado'}}</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Medición y Potenciómetros -->
+    <div class="grid">
+      <section class="card">
+        <h2>Medición de Inventario</h2>
+        <div class="chart-container">
+          <canvas #inventoryChart></canvas>
+        </div>
+        <div>
+          <h3>Distancia actual: <span>{{currentDistance}} cm</span></h3>
+          <div class="progress">
+            <div [ngClass]="getProgressClass()" [style.width.%]="getProgressPercentage()"></div>
+          </div>
+          <div class="progress-labels">
+            <small>Stock suficiente (≤15cm)</small>
+            <small>Stock bajo (15-30cm)</small>
+            <small>Stock agotado (>30cm)</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Potenciómetros</h2>
+        <div *ngFor="let pot of potentiometers; let i = index">
+          <h3>Potenciómetro {{i + 1}} ({{pot.label}})</h3>
+          <input type="range" min="0" max="1023" [(ngModel)]="pot.value" (ngModelChange)="updatePotValues()">
+          <p>Valor: <span>{{pot.value}}</span> | Umbral: <span>{{getThreshold(pot.value, i)}} cm</span></p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Configuración -->
+    <section class="card" id="config">
+      <h2>Configuración del Sistema</h2>
+      <form (ngSubmit)="saveConfig()">
+        <div class="config-grid">
+          <div *ngFor="let led of leds">
+            <label>{{led.name}}</label>
+            <select [(ngModel)]="led.value" [name]="led.id">
+              <option value="0">Apagado</option>
+              <option value="1">Encendido</option>
+            </select>
+          </div>
+        </div>
+        <div class="config-grid">
+          <div>
+            <label>Buzzer</label>
+            <select [(ngModel)]="config.buzzer" name="buzzer">
+              <option value="0">Apagado</option>
+              <option value="1">Encendido</option>
+            </select>
+          </div>
+          <div>
+            <label>Rango máximo (cm)</label>
+            <input type="number" [(ngModel)]="config.ultrasonico" name="maxRange" min="15" max="100">
+          </div>
+        </div>
+        <button type="submit">Guardar Configuración</button>
+      </form>
+    </section>
+
+    <!-- Historial -->
+    <section class="card" id="historial">
+      <h2>Historial de Mediciones</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Sensor</th>
+            <th>Valor</th>
+            <th>Unidad</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of history">
+            <td>{{item.sensor}}</td>
+            <td>{{item.valor}}</td>
+            <td>{{item.unidad}}</td>
+            <td>{{item.createdAt | date:'HH:mm:ss'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  
+</body>
+</html>

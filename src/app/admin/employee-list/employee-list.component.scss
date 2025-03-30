@@ -1,0 +1,252 @@
+.employee-list {
+  padding: 1rem;
+
+  /* Ajustar el título y el botón de Crear */
+  h2 {
+    margin-bottom: 1.5rem; // Aumentar el espacio debajo del título
+  }
+  .error-message {
+    color: red;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ffe6e6;
+    border: 1px solid red;
+    border-radius: 4px;
+  }
+  /* Estilos para el botón de Crear */
+  .Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50px !important;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: 0.3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: #4a827e !important; // Verde
+    margin-bottom: 1rem; // Separar el botón de la tabla
+  }
+
+  .sign {
+    width: 100%;
+    font-size: 2em;
+    color: white !important;
+    transition-duration: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .text {
+    position: absolute;
+    right: 0;
+    width: 0;
+    opacity: 0;
+    color: white !important;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition-duration: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+  }
+
+  .Btn:hover {
+    width: 125px;
+    border-radius: 50px !important;
+    transition-duration: 0.3s;
+    background-color: #2e6b67 !important; // Tono más claro al hacer hover
+  }
+
+  .Btn:hover .sign {
+    width: 30%;
+    transition-duration: 0.3s;
+    padding-left: 5px; // Reducir padding para evitar superposición
+  }
+
+  .Btn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: 0.3s;
+    padding-right: 5px; // Reducir padding para evitar superposición
+  }
+
+  .Btn:active {
+    transform: translate(2px, 2px);
+  }
+
+  /* Estilos para los modales */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    h3 {
+      margin-top: 0;
+    }
+    form, p {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      label {
+        font-weight: bold;
+        margin-bottom: 0.3rem;
+      }
+      input {
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+    }
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      &:first-of-type {
+        background-color: #2ecc71;
+        color: white;
+        &:hover {
+          background-color: #27ae60;
+        }
+      }
+      &:last-of-type {
+        background-color: #e74c3c;
+        color: white;
+        &:hover {
+          background-color: #c0392b;
+        }
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    th,
+    td {
+      border: 1px solid #37615e;
+      padding: 0.5rem;
+      text-align: left;
+    }
+    th {
+      background-color: #4a827e;
+      color: white !important; // Cambiar el color de las letras a blanco
+    }
+    td {
+      background-color: #f9f9f9; // Fondo claro para las celdas de datos
+    }
+    button {
+      padding: 0.3rem 0.6rem;
+      border: none;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+    .delete-btn {
+      background-color: #e74c3c;
+      &:hover {
+        background-color: #c0392b;
+      }
+    }
+  }
+
+  // Estilos del botón de Editar
+.edit-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #4a827e !important;
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  position: relative;
+  text-decoration: none !important;
+}
+
+.edit-svgIcon {
+  width: 17px;
+}
+
+.edit-svgIcon path {
+  fill: white;
+}
+
+// Estilos del botón de Eliminar
+.delete-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgb(232, 0, 0)!important;
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  position: relative;
+}
+
+.delete-svgIcon {
+  width: 15px;
+}
+
+.delete-svgIcon path {
+  fill: white;
+}.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #4a827e;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+
+  span {
+    font-size: 16px;
+  }
+}}

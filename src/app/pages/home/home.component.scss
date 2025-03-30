@@ -1,0 +1,848 @@
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+// Hero Section
+.hero-section {
+  background-color: #4A827E;
+  color: white;
+  padding: 4rem 0;
+
+  @media (min-width: 768px) {
+    padding: 6rem 0;
+  }
+
+  .hero-content {
+    @media (min-width: 768px) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .hero-text {
+    @media (min-width: 768px) {
+      width: 50%;
+      margin-bottom: 0;
+    }
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+
+      @media (min-width: 768px) {
+        font-size: 3rem;
+      }
+    }
+
+    p {
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .hero-image {
+    @media (min-width: 768px) {
+      width: 50%;
+    }
+
+    img {
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
+  }
+}
+
+// Features Section
+.features-section {
+  padding: 4rem 0;
+  background-color: white;
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1f2937;
+  }
+
+  .features-grid {
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .feature-card {
+    background-color: #e5e5e5;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+
+    .icon-circle {
+      width: 4rem;
+      height: 4rem;
+      background-color: #4A827E;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+
+      i {
+        color: white;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #4b5563;
+    }
+  }
+}
+
+// Products Section
+.products-section {
+  padding: 4rem 0;
+  background-color: #e5e5e5;
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+
+  .subtitle {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #4b5563;
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .products-grid {
+    display: grid;
+    gap: 1.5rem;
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .product-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 12rem;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1rem;
+
+      h3 {
+        font-weight: 600;
+        font-size: 1.125rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: #4b5563;
+        font-size: 0.875rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .price {
+          font-weight: bold;
+          color: #4A827E;
+        }
+      }
+    }
+  }
+
+  .products-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+}
+
+// Testimonials Section
+.testimonials-section {
+  padding: 4rem 0;
+  background-color: white;
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1f2937;
+  }
+
+  .testimonials-grid {
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .testimonial-card {
+    background-color: #e5e5e5;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      .avatar {
+        width: 3rem;
+        height: 3rem;
+        background-color: #4A827E;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: white;
+        font-weight: bold;
+      }
+
+      h3 {
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 0.875rem;
+        color: #4b5563;
+      }
+    }
+
+    .quote {
+      color: #4b5563;
+      font-style: italic;
+    }
+  }
+}
+
+// CTA Section
+.cta-section {
+  padding: 4rem 0;
+  background-color: #4A827E;
+  color: white;
+  text-align: center;
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 2rem;
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// Buttons
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.primary-btn {
+  background-color: #4A827E;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3a6b68;
+  }
+
+  i {
+    margin-left: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.outline-btn {
+  background-color: transparent;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.details-btn {
+  background-color: #4A827E;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3a6b68;
+  }
+}
+
+.imagen-1 {
+  width: 500px;
+  height: 400px;
+  border-radius: 50px;
+  margin-left: 29%;
+  object-fit: cover;
+}
+
+.material-icons {
+  color: white;
+  font-size: 2rem; /* Ajusta el tamaño del ícono */
+}
+
+// Nuevo botón animado de Uiverse.io
+.type--C {
+  --line_color: #ffffff;
+  --back_color: #83aba7;
+}
+
+.button {
+  position: relative;
+  z-index: 0;
+  width: 240px;
+  height: 56px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--line_color);
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+.button__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.button::before,
+.button::after,
+.button__text::before,
+.button__text::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--line_color);
+  transition: all 0.5s ease;
+}
+
+.button::before {
+  top: 0;
+  left: 54px;
+  width: calc(100% - 56px * 2 - 16px);
+}
+
+.button::after {
+  top: 0;
+  right: 54px;
+  width: 8px;
+}
+
+.button__text::before {
+  bottom: 0;
+  right: 54px;
+  width: calc(100% - 56px * 2 - 16px);
+}
+
+.button__text::after {
+  bottom: 0;
+  left: 54px;
+  width: 8px;
+}
+
+.button__line {
+  position: absolute;
+  top: 0;
+  width: 56px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.button__line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150%;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 300px;
+  border: solid 3px var(--line_color);
+}
+
+.button__line:nth-child(1),
+.button__line:nth-child(1)::before {
+  left: 0;
+}
+
+.button__line:nth-child(2),
+.button__line:nth-child(2)::before {
+  right: 0;
+}
+
+.button:hover {
+  letter-spacing: 6px;
+}
+
+.button:hover::before,
+.button:hover .button__text::before {
+  width: 8px;
+}
+
+.button:hover::after,
+.button:hover .button__text::after {
+  width: calc(100% - 56px * 2 - 16px);
+}
+
+.button__drow1,
+.button__drow2 {
+  position: absolute;
+  z-index: -1;
+  border-radius: 16px;
+  transform-origin: 16px 16px;
+}
+
+.button__drow1 {
+  top: -16px;
+  left: 40px;
+  width: 32px;
+  height: 0;
+  transform: rotate(30deg);
+}
+
+.button__drow2 {
+  top: 44px;
+  left: 77px;
+  width: 32px;
+  height: 0;
+  transform: rotate(-127deg);
+}
+
+.button__drow1::before,
+.button__drow1::after,
+.button__drow2::before,
+.button__drow2::after {
+  content: "";
+  position: absolute;
+}
+
+.button__drow1::before {
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 32px;
+  border-radius: 16px;
+  transform-origin: 16px 16px;
+  transform: rotate(-60deg);
+}
+
+.button__drow1::after {
+  top: -10px;
+  left: 45px;
+  width: 0;
+  height: 32px;
+  border-radius: 16px;
+  transform-origin: 16px 16px;
+  transform: rotate(69deg);
+}
+
+.button__drow2::before {
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 32px;
+  border-radius: 16px;
+  transform-origin: 16px 16px;
+  transform: rotate(-146deg);
+}
+
+.button__drow2::after {
+  bottom: 26px;
+  left: -40px;
+  width: 0;
+  height: 32px;
+  border-radius: 16px;
+  transform-origin: 16px 16px;
+  transform: rotate(-262deg);
+}
+
+.button__drow1,
+.button__drow1::before,
+.button__drow1::after,
+.button__drow2,
+.button__drow2::before,
+.button__drow2::after {
+  background: var(--back_color);
+}
+
+.button:hover .button__drow1 {
+  animation: drow1 ease-in 0.06s;
+  animation-fill-mode: forwards;
+}
+
+.button:hover .button__drow1::before {
+  animation: drow2 linear 0.08s 0.06s;
+  animation-fill-mode: forwards;
+}
+
+.button:hover .button__drow1::after {
+  animation: drow3 linear 0.03s 0.14s;
+  animation-fill-mode: forwards;
+}
+
+.button:hover .button__drow2 {
+  animation: drow4 linear 0.06s 0.2s;
+  animation-fill-mode: forwards;
+}
+
+.button:hover .button__drow2::before {
+  animation: drow3 linear 0.03s 0.26s;
+  animation-fill-mode: forwards;
+}
+
+.button:hover .button__drow2::after {
+  animation: drow5 linear 0.06s 0.32s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes drow1 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100px;
+  }
+}
+
+@keyframes drow2 {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  11% {
+    opacity: 1;
+  }
+  100% {
+    width: 120px;
+  }
+}
+
+@keyframes drow3 {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 80px;
+  }
+}
+
+@keyframes drow4 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 120px;
+  }
+}
+
+@keyframes drow5 {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 124px;
+  }
+}
+// Nuevo botón cta de Uiverse.io
+.cta {
+  position: relative;
+  margin: auto;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50px;
+  background: #ffffff; /* Cambiado a #a3c7c4 */
+  width: 45px;
+  height: 45px;
+  transition: all 0.3s ease;
+  display: block;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cta::after {
+  content: "CREAR UNA CUENTA"; /* Texto igual al span */
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50px;
+  background: #000000;
+  width: 9px;
+  height: 21px;
+  transition: all 0.3s ease;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  padding: 12px 18px;
+  z-index: 2;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-align: left;
+}
+
+.cta span {
+  position: relative;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff; /* Cambiado a #a3c7c4 */
+}
+
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #a3c7c4; /* Cambiado a #a3c7c4 */
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.cta:hover:before {
+  width: 100%;
+}
+
+.cta:hover::after {
+  width: 100%;
+}
+
+.cta:hover svg {
+  transform: translateX(0);
+  stroke: #000000; /* Flecha blanca al hacer hover */
+}
+
+.cta:active {
+  transform: scale(0.95);
+}
+
+/* Estilos de la nueva tarjeta de Uiverse.io */
+.card {
+  width: 250px;
+  height: 355px;
+  background: lightgrey;
+  border-radius: 20px;
+  box-shadow: -8px 8px 0px 5px rgba(50, 50, 50, 0.2);
+  border: solid 2px white;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.5s ease;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transform: rotate(3deg) skewX(3deg);
+  margin: 0 auto; /* Centrado horizontalmente */
+
+  #cardtop {
+    width: 100%;
+    height: 64%;
+    display: flex;
+    flex-direction: column; /* Para apilar el SVG y la imagen */
+    justify-content: center;
+    align-items: center;
+    transition: all 0.1s ease;
+    color: #4a827e; /* Color ajustado */
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Para que la imagen se ajuste bien */
+    }
+
+    svg {
+      margin-bottom: 5px; /* Espacio entre SVG y la imagen */
+    }
+  }
+
+  #cardbottom {
+    width: 100%;
+    height: 31%;
+    border-end-start-radius: 20px;
+    border-end-end-radius: 20px;
+    background-color: white;
+    font-weight: 500;
+    font-size: 16px; /* Reducido para que quepa mejor */
+    padding: 10px;
+    color: #000000; /* Color ajustado */
+    transition: all 0.2s ease;
+    position: relative;
+
+    #cardbottomtitle {
+      margin-bottom: 5px;
+    }
+
+    #cardbottomprice {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 5px;
+      border-top: 2px solid lightgrey;
+    }
+
+    .details-btn {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background-color: #4A827E;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.25rem;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+
+      &:hover {
+        background-color: #3a6b68;
+      }
+    }
+  }
+
+  #cardbrightfilter {
+    width: 450px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    transform: rotate(-40deg) translateX(-15%) translateY(-160%);
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  #cardnewfilter {
+    width: 75px;
+    height: 30px;
+    border-radius: 25px;
+    background-color: #4a827e; /* Color ajustado */
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    font-weight: 500;
+  }
+
+  &:hover {
+    transform: translateY(-5%);
+    box-shadow: 0px 20px 10px rgba(50, 50, 50, 0.2);
+  }
+
+  &:hover #cardbrightfilter {
+    transform: rotate(-42deg) translateX(-15%) translateY(-79%);
+  }
+
+  &:active #cardtop {
+    transform: scale(1.05);
+  }
+
+  &:active #cardbottom {
+    background-color: #4a827e; /* Color ajustado */
+    color: white;
+  }
+
+  &:active #cardbottomprice {
+    border-top: 2px solid white;
+  }
+}
+
+.products-cta {
+  text-align: center;
+  margin-top: 2.5rem;
+}

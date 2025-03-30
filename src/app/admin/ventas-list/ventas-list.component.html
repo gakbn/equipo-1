@@ -1,0 +1,143 @@
+<div class="product-list">
+  <!-- Loader Overlay -->
+  <div class="loader-overlay" *ngIf="loading">
+    <div class="loader">
+      <div class="box box-1">
+        <div class="side-left"></div>
+        <div class="side-right"></div>
+        <div class="side-top"></div>
+      </div>
+      <div class="box box-2">
+        <div class="side-left"></div>
+        <div class="side-right"></div>
+        <div class="side-top"></div>
+      </div>
+      <div class="box box-3">
+        <div class="side-left"></div>
+        <div class="side-right"></div>
+        <div class="side-top"></div>
+      </div>
+      <div class="box box-4">
+        <div class="side-left"></div>
+        <div class="side-right"></div>
+        <div class="side-top"></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Lista de Ventas</h2>
+
+  <!-- Botón de Crear -->
+  <button class="Btn" (click)="showCreateForm()">
+    <div class="sign">+</div>
+    <div class="text">Crear</div>
+  </button>
+
+  <!-- Modal para Crear -->
+  <div *ngIf="isCreating" class="modal-overlay">
+    <div class="modal-content">
+      <h3>Crear Nueva Venta</h3>
+      <form (ngSubmit)="createSale()">
+        <div>
+          <label>Total:</label>
+          <input [(ngModel)]="newSale.total" name="total" type="number" required />
+        </div>
+        <div>
+          <label>Fecha Venta:</label>
+          <input [(ngModel)]="newSale.fechaventa" name="fechaventa" type="datetime-local" required />
+        </div>
+        <div>
+          <label>ID Cliente:</label>
+          <input [(ngModel)]="newSale.idcliente" name="idcliente" type="number" required />
+        </div>
+        <div>
+          <label>ID Empleado:</label>
+          <input [(ngModel)]="newSale.idempleado" name="idempleado" type="number" required />
+        </div>
+        <button type="submit">Crear</button>
+        <button type="button" (click)="cancelCreate()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tabla de ventas -->
+  <table>
+    <thead>
+      <tr>
+        <th>Folio Venta</th>
+        <th>Total</th>
+        <th>Fecha Venta</th>
+        <th>ID Cliente</th>
+        <th>ID Empleado</th>
+        <th>Creado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sale of getPaginatedSales()">
+        <td>{{ sale.folioventa }}</td>
+        <td>{{ sale.total }}</td>
+        <td>{{ sale.fechaventa | date:'medium' }}</td>
+        <td>{{ sale.idcliente }}</td>
+        <td>{{ sale.idempleado }}</td>
+        <td>{{ sale.created_at | date:'medium' }}</td>
+        <td>
+          <button class="edit-button" (click)="editSale(sale)">
+            <svg class="edit-svgIcon" viewBox="0 0 512 512">
+              <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
+            </svg>
+          </button>
+          <button class="delete-button" (click)="showDeleteConfirm(sale)">
+            <svg class="delete-svgIcon" viewBox="0 0 448 512">
+              <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path>
+            </svg>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Controles de paginación -->
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+
+  <!-- Modal para Editar -->
+  <div *ngIf="selectedSale" class="modal-overlay">
+    <div class="modal-content">
+      <h3>Editar Venta</h3>
+      <form (ngSubmit)="saveSale()">
+        <div>
+          <label>Total:</label>
+          <input [(ngModel)]="selectedSale.total" name="total" type="number" required />
+        </div>
+        <div>
+          <label>Fecha Venta:</label>
+          <input [(ngModel)]="selectedSale.fechaventa" name="fechaventa" type="datetime-local" required />
+        </div>
+        <div>
+          <label>ID Cliente:</label>
+          <input [(ngModel)]="selectedSale.idcliente" name="idcliente" type="number" required />
+        </div>
+        <div>
+          <label>ID Empleado:</label>
+          <input [(ngModel)]="selectedSale.idempleado" name="idempleado" type="number" required />
+        </div>
+        <button type="submit">Guardar</button>
+        <button type="button" (click)="cancelEdit()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal para Eliminar -->
+  <div *ngIf="isDeleting" class="modal-overlay">
+    <div class="modal-content">
+      <h3>Confirmar Eliminación</h3>
+      <p>¿Estás seguro de que quieres eliminar la venta con Folio "{{ saleToDelete?.folioventa }}"?</p>
+      <button (click)="deleteSale(saleToDelete?.folioventa)" class="delete-btn">Eliminar</button>
+      <button (click)="cancelDelete()">Cancelar</button>
+    </div>
+  </div>
+</div>

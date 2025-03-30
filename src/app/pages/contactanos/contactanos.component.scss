@@ -1,0 +1,319 @@
+.min-h-screen {
+    min-height: 100vh;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .flex-col {
+    flex-direction: column;
+  }
+  
+  .flex-grow {
+    flex-grow: 1;
+  }
+  
+  .container {
+    max-width: 1200px;
+  }
+  
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Header Section */
+  .header-section {
+    background-color: #4a827e;
+    color: white;
+    padding: 4rem 0;
+  
+    h1 {
+      font-size: 2.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      font-size: 1rem;
+    }
+  }
+  
+  /* Contact Section */
+  .contact-section {
+    padding: 4rem 0;
+    background-color: white;
+  
+    h2 {
+      color: #1f2937;
+    }
+  
+    .space-y-6 {
+      > * + * {
+        margin-top: 1.5rem;
+      }
+    }
+  
+    .grid {
+      display: grid;
+    }
+  
+    .gap-6 {
+      gap: 1.5rem;
+    }
+  
+    .gap-12 {
+      gap: 3rem;
+    }
+  
+    .text-primary {
+      color: #4a827e;
+    }
+  
+    mat-card {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  
+    mat-card-content {
+      padding: 1.5rem;
+  
+      h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+  
+      p {
+        color: #4b5563;
+      }
+    }
+  
+    .space-x-4 {
+      > * + * {
+        margin-left: 1rem;
+      }
+    }
+  
+    .mt-1 {
+      margin-top: 0.25rem;
+    }
+  
+    @media (min-width: 1024px) {
+      .lg\:w-2\/3 {
+        width: 66.666667%;
+      }
+  
+      .lg\:w-1\/3 {
+        width: 33.333333%;
+      }
+  
+      .lg\:flex-row {
+        flex-direction: row;
+      }
+    }
+  
+    @media (min-width: 768px) {
+      .md\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  }
+  
+  /* Map Section */
+  .map-section {
+    padding: 4rem 0;
+    background-color: #e5e5e5;
+  
+    h2 {
+      color: #1f2937;
+      margin-bottom: 2rem;
+    }
+  
+    .map-placeholder {
+      position: relative;
+      padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+      height: 0;
+      overflow: hidden;
+  
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  
+    .rounded-lg {
+      border-radius: 0.5rem;
+    }
+  
+    .shadow-md {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  /* FAQ Section */
+  .faq-section {
+    padding: 4rem 0;
+    background-color: white;
+  
+    h2 {
+      color: #1f2937;
+      margin-bottom: 3rem;
+    }
+  
+    .grid {
+      display: grid;
+    }
+  
+    .gap-8 {
+      gap: 2rem;
+    }
+  
+    .max-w-4xl {
+      max-width: 64rem;
+    }
+  
+    .faq-card {
+      background-color: #e5e5e5;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+  
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #1f2937;
+      }
+  
+      p {
+        color: #4b5563;
+      }
+    }
+  
+    @media (min-width: 768px) {
+      .md\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  }/* From Uiverse.io by Smit-Prajapati */ 
+  .orange {
+    color: #a3c7c4;
+  }
+  
+  .form-container {
+    max-width: 700px;
+    margin: 30px;
+    background-color: #4a827e;
+    padding: 30px;
+    border-left: 5px solid #a3c7c4;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+  }
+  
+  .heading {
+    display: block;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  
+  .form-container .form .input {
+    color: #ffffff;
+    width: 100%;
+    background-color: darken(#a3c7c4, 10%); // Más oscuro para contraste
+    border: none;
+    outline: none;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    border-left: 1px solid transparent;
+  
+    &::placeholder { // Cambia el color del placeholder a blanco
+      color: #ffffff;
+      opacity: 1; // Para asegurar que no se vea grisáceo en algunos navegadores
+    }
+  }
+  
+  .form-container .form .input:focus {
+    border-left: 5px solid #a3c7c4;
+  }
+  
+  .form-container .form .textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: #a3c7c4; // Más claro para que el texto blanco se vea
+    color: #ffffff; // Cambiado de #2c5351 a blanco
+    font-weight: bold;
+    resize: none;
+    max-height: 150px;
+    margin-bottom: 20px;
+    border-left: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
+  
+    &::placeholder { // Cambia el color del placeholder a blanco
+      color: #ffffff;
+      opacity: 1; // Para asegurar que no se vea grisáceo en algunos navegadores
+    }
+  }
+  
+  .form-container .form .textarea:focus {
+    border-left: 5px solid #a3c7c4;
+  }
+  
+  .form-container .form .button-container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .form-container .form .button-container .send-button {
+    flex-basis: 70%;
+    background: #a3c7c4;
+    padding: 10px;
+    color: #4a827e;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .form-container .form .button-container .send-button:hover {
+    background: transparent;
+    border: 1px solid #a3c7c4;
+    color: #a3c7c4;
+  }
+  
+  .form-container .form .button-container .reset-button-container {
+    filter: drop-shadow(1px 1px 0px #a3c7c4);
+    flex-basis: 30%;
+  }
+  
+  .form-container .form .button-container .reset-button-container .reset-button {
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    color: #a3c7c4;
+    font-weight: bold;
+    background: #4a827e;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .form-container .form .button-container .reset-button-container .reset-button:hover {
+    background: #a3c7c4;
+    color: #4a827e;
+  }
